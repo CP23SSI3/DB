@@ -1,5 +1,5 @@
 create DATABASE if not EXISTS internhub;
-use intenhub;
+use internhub;
 
 show tables;
 select * from openPositions;
