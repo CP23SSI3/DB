@@ -2,7 +2,6 @@ create DATABASE if not EXISTS internhub;
 use internhub;
 
 show tables;
-select * from openPositions;
 drop table if exists posts;
 drop table if exists companies;
 drop table if exists addresses;
