@@ -1,4 +1,4 @@
--- create DATABASE if not EXISTS internhub;
+create DATABASE if not EXISTS internhub;
 use internhub;
 
 show tables;
@@ -58,13 +58,13 @@ insert into companies values ('8e20782f-2807-4f13-a11e-0fb9ff955488',
 
 create table if not exists positionTags (
     positionTagId VARCHAR(36) NOT NULL,
-    positionName VARCHAR(50) NOT NULL,
+    positionName VARCHAR(50) NOT NULL UNIQUE,
     primary key (positionTagId));
 
 insert into positionTags values ('04a6ab2d-c1fc-44e2-b46c-b5193fb20bf7',
                                  'Front-end developer');
 insert into positionTags values ('a27c36fd-9ed4-4de7-ad8e-f5334953944d',
-                                 'Backend-end developer');
+                                 'Back-end developer');
 
 create table if not exists posts(
     postId VARCHAR(36) NOT NULL,
@@ -87,6 +87,7 @@ create table if not exists posts(
     workEndTime TIME NOT NULL,
     workDay VARCHAR(30) NOT NULL,
     workType VARCHAR(20) NOT NULL,
+    postUrl VARCHAR(255),
     primary key (postId),
     foreign key (compId) references companies(compId),
     foreign key (addressId) references addresses(addressId)
@@ -112,7 +113,8 @@ insert into posts values (
                           '09:30',
                           '17:30',
                           'mon,tue,wed,thu,fri',
-                          'HYBRID'
+                          'HYBRID',
+                          'https://www.wikipedia.org/'
                          );
 
 create table if not exists openPositions(
