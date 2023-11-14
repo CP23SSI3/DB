@@ -1,12 +1,12 @@
-create DATABASE if not EXISTS internhub;
+-- create DATABASE if not EXISTS internhub;
 use internhub;
 
 show tables;
-drop table if exists posts;
-drop table if exists companies;
-drop table if exists addresses;
-drop table if exists positionTags;
-drop table if exists openpositions;
+drop table openpositions;
+drop table positionTags;
+drop table posts;
+drop table companies;
+drop table addresses;
 
 create table if not exists addresses (
     addressId VARCHAR(36) NOT NULL,
@@ -104,7 +104,7 @@ insert into posts values (
                           '8e20782f-2807-4f13-a11e-0fb9ff955488',
                           'สวัสดิการพื้นฐาน : กินขนมฟรี ข้าวฟรี ไม่มีเงินเดือน',
                           'ติดต่อไนซ์ วิชชุตา พิภพภิญโญสำหรับข้อมูลเพิ่มเติม กรุณาติดต่อผ่านอีเมลที่ระบุเอาไว้เท่านั้น',
-                          'port-folio,resume,cv',
+                          'portfolio,resume,cv',
                           'Vichuta Pipoppinyo',
                           '012-345-6789',
                           'nice.vct@mail.kmutt.ac.th',
