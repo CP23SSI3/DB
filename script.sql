@@ -124,7 +124,7 @@ create table if not exists openPositions(
                                             workMonth NUMERIC NOT NULL,
                                             salary NUMERIC,
                                             primary key (openPositionId),
-                                            foreign key (postId) references posts (postId)
+                                            foreign key (postId) references posts (postId) on delete cascade
 ) engine = InnoDB;
 
 insert into openPositions values (
@@ -152,8 +152,8 @@ create table if not exists postPositionTags(
     postId VARCHAR(36) NOT NULL,
     positionTagName VARCHAR(50) NOT NULL,
     primary key (postPositionTagId),
-    foreign key (postId) references posts (postId),
-    foreign key (positionTagName) references positionTags (positionTagName)
+    foreign key (postId) references posts (postId) on delete cascade,
+    foreign key (positionTagName) references positionTags (positionTagName) on delete cascade
 ) engine = InnoDB;
 
 insert into postPositionTags values (
