@@ -152,8 +152,8 @@ create table if not exists postPositionTags(
     postId VARCHAR(36) NOT NULL,
     positionTagName VARCHAR(50) NOT NULL,
     primary key (postPositionTagId),
-    foreign key (postId) references posts (postId) on delete cascade,
-    foreign key (positionTagName) references positionTags (positionTagName) on delete no action
+    foreign key (postId) references posts (postId) on delete no action,
+    foreign key (positionTagName) references positionTags (positionTagName) on delete no action on update cascade
 ) engine = InnoDB;
 
 insert into postPositionTags values (
