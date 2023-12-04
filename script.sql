@@ -76,7 +76,7 @@ create table if not exists posts(
                                     compId VARCHAR(36) NOT NULL,
                                     postWelfare VARCHAR(1500) NOT NULL,
                                     enrolling VARCHAR(1500) NOT NULL,
-                                    documents VARCHAR(100) NOT NULL,
+                                    documents VARCHAR(100),
                                     coordinatorName VARCHAR(100) NOT NULL,
                                     tel VARCHAR(12) NOT NULL,
                                     email VARCHAR(320) NOT NULL,
@@ -118,10 +118,10 @@ insert into posts values (
 create table if not exists openPositions(
                                             openPositionId VARCHAR(36) NOT NULL,
                                             openPositionTitle VARCHAR(50) NOT NULL,
-                                            openPositionNum NUMERIC NOT NULL,
+                                            openPositionNum NUMERIC,
                                             openPositionDesc VARCHAR(200) NOT NULL,
                                             postId VARCHAR(36) NOT NULL,
-                                            workMonth NUMERIC NOT NULL,
+                                            workMonth NUMERIC,
                                             salary NUMERIC,
                                             primary key (openPositionId),
                                             foreign key (postId) references posts (postId) on delete cascade
