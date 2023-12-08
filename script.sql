@@ -8,6 +8,8 @@ drop table if exists posts;
 drop table if exists companies;
 drop table if exists addresses;
 
+set names utf8;
+
 create table if not exists addresses (
                                          addressId VARCHAR(36) NOT NULL,
                                          country VARCHAR(90) NOT NULL,
