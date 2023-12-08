@@ -1,8 +1,8 @@
 create DATABASE if not EXISTS internhub;
 use internhub;
 
-drop table if exists postpositionTags;
-drop table if exists openpositions;
+drop table if exists postPositionTags;
+drop table if exists openPositions;
 drop table if exists positionTags;
 drop table if exists posts;
 drop table if exists companies;
