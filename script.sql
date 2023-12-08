@@ -93,16 +93,16 @@ create table if not exists posts(
 
 insert into posts values (
                              'eba83fe4-937b-4054-a420-d977534feebe',
-                             'ประกาศรับฝึกงาน ด่วนที่สุด บริษัทตามใจฉัน',
+                             'This is a title',
                              '2023-10-04 13:30:00+07:00',
                              '2023-10-05 13:30:00+07:00',
                              null,
                              125,
                              'OPENED',
-                             'ประกาศรับฝึกงานด่วนที่สุดแต่ตลอดทั้งปี นี่คือส่วนหนึ่งของตัวอย่างรายละเอียดข้อมูล',
+                             'This is the description',
                              '8e20782f-2807-4f13-a11e-0fb9ff955488',
-                             'สวัสดิการพื้นฐาน : กินขนมฟรี ข้าวฟรี ไม่มีเงินเดือน',
-                             'ติดต่อไนซ์ วิชชุตา พิภพภิญโญสำหรับข้อมูลเพิ่มเติม กรุณาติดต่อผ่านอีเมลที่ระบุเอาไว้เท่านั้น',
+                             'This is default welfare. Free snack and salary-free.',
+                             'Please contact coordinate via emil only',
                              'portfolio,resume,cv',
                              'Vichuta Pipoppinyo',
                              '012-345-6789',
@@ -114,6 +114,29 @@ insert into posts values (
                              'HYBRID',
                              'https://www.wikipedia.org/'
                          );
+-- insert into posts values (
+--                              'eba83fe4-937b-4054-a420-d977534feebe',
+--                              'ประกาศรับฝึกงาน ด่วนที่สุด บริษัทตามใจฉัน',
+--                              '2023-10-04 13:30:00+07:00',
+--                              '2023-10-05 13:30:00+07:00',
+--                              null,
+--                              125,
+--                              'OPENED',
+--                              'ประกาศรับฝึกงานด่วนที่สุดแต่ตลอดทั้งปี นี่คือส่วนหนึ่งของตัวอย่างรายละเอียดข้อมูล',
+--                              '8e20782f-2807-4f13-a11e-0fb9ff955488',
+--                              'สวัสดิการพื้นฐาน : กินขนมฟรี ข้าวฟรี ไม่มีเงินเดือน',
+--                              'ติดต่อไนซ์ วิชชุตา พิภพภิญโญสำหรับข้อมูลเพิ่มเติม กรุณาติดต่อผ่านอีเมลที่ระบุเอาไว้เท่านั้น',
+--                              'portfolio,resume,cv',
+--                              'Vichuta Pipoppinyo',
+--                              '012-345-6789',
+--                              'nice.vct@mail.kmutt.ac.th',
+--                              '9346a466-4a82-4037-ab00-72ba24fa50bf',
+--                              '09:30',
+--                              '17:30',
+--                              'mon,tue,wed,thu,fri',
+--                              'HYBRID',
+--                              'https://www.wikipedia.org/'
+--                          );
 
 create table if not exists openPositions(
                                             openPositionId VARCHAR(36) NOT NULL,
