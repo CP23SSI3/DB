@@ -1,8 +1,8 @@
 create DATABASE if not EXISTS internhub;
 use internhub;
 
-drop table if exists postpositionTags;
-drop table if exists openpositions;
+drop table if exists postPositionTags;
+drop table if exists openPositions;
 drop table if exists positionTags;
 drop table if exists posts;
 drop table if exists companies;
@@ -36,7 +36,7 @@ create table if not exists companies (
                                          compName VARCHAR(100) NOT NULL,
                                          compLogoKey VARCHAR(100) NOT NULL,
                                          compDesc VARCHAR(500) NOT NULL,
-                                         defaultWelfare VARCHAR(500),
+                                         defaultWelfare VARCHAR(1500),
                                          createdDate DATETIME NOT NULL,
                                          lastUpdate DATETIME NOT NULL,
                                          lastActive DATETIME NOT NULL,
@@ -72,14 +72,14 @@ create table if not exists posts(
                                     closedDate DATETIME,
                                     totalView NUMERIC NOT NULL,
                                     status VARCHAR(10) NOT NULL,
-                                    postDesc VARCHAR(500) NOT NULL,
+                                    postDesc VARCHAR(1500) NOT NULL,
                                     compId VARCHAR(36) NOT NULL,
-                                    postWelfare VARCHAR(500) NOT NULL,
-                                    enrolling VARCHAR(500) NOT NULL,
-                                    documents VARCHAR(100) NOT NULL,
+                                    postWelfare VARCHAR(1500) NOT NULL,
+                                    enrolling VARCHAR(1500) NOT NULL,
+                                    documents VARCHAR(100),
                                     coordinatorName VARCHAR(100) NOT NULL,
                                     tel VARCHAR(12) NOT NULL,
-                                    email VARCHAR(80) NOT NULL,
+                                    email VARCHAR(320) NOT NULL,
                                     addressId VARCHAR(36) NOT NULL,
                                     workStartTime TIME NOT NULL,
                                     workEndTime TIME NOT NULL,
@@ -118,10 +118,10 @@ insert into posts values (
 create table if not exists openPositions(
                                             openPositionId VARCHAR(36) NOT NULL,
                                             openPositionTitle VARCHAR(50) NOT NULL,
-                                            openPositionNum NUMERIC NOT NULL,
-                                            openPositionDesc VARCHAR(300) NOT NULL,
+                                            openPositionNum NUMERIC,
+                                            openPositionDesc VARCHAR(200) NOT NULL,
                                             postId VARCHAR(36) NOT NULL,
-                                            workMonth NUMERIC NOT NULL,
+                                            workMonth NUMERIC,
                                             salary NUMERIC,
                                             primary key (openPositionId),
                                             foreign key (postId) references posts (postId) on delete cascade
@@ -152,8 +152,8 @@ create table if not exists postPositionTags(
     postId VARCHAR(36) NOT NULL,
     positionTagName VARCHAR(50) NOT NULL,
     primary key (postPositionTagId),
-    foreign key (postId) references posts (postId) on delete cascade,
-    foreign key (positionTagName) references positionTags (positionTagName) on delete cascade
+    foreign key (postId) references posts (postId) on delete no action,
+    foreign key (positionTagName) references positionTags (positionTagName) on delete no action on update cascade
 ) engine = InnoDB;
 
 insert into postPositionTags values (

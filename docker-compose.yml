@@ -1,0 +1,59 @@
+# version: '3.1'
+
+# services:
+#   mysqldb:
+#     image: mysql
+#     container_name: mysqldb
+#     ports:
+#       - "5713:3306"
+#     volumes:
+#       - ../DB:/docker-entrypoint-initdb.d
+#       - ../DB/data:/var/lib/mysql
+#     environment:
+#       MYSQL_ROOT_PASSWORD: cp23ssi3
+#       MYSQL_DATABASE: internhub
+#     networks:
+#       - mysqlnetwork
+    
+#   networks:
+#     mysqlnetwork:
+      # driver: bridge
+
+
+# services:
+#   mysql:
+#     image: mysql:5.7
+#     ports:
+#       - "5713:3306"
+#     volumes:
+#       - ./:/docker-entrypoint-initdb.d
+#       - ./data:/var/lib/mysql
+#     environment:
+#       MYSQL_ROOT_PASSWORD: cp23ssi3
+#       MYSQL_DATABASE: internhub
+#     networks:
+#       - mysqlnetwork
+
+# networks:
+#   mysqlnetwork:
+#     driver: bridge
+
+version: '3.1'
+
+services:
+  mysqldb:
+    image: mysql
+    container_name: mysqldb
+    ports:
+      - "5713:3306"
+    volumes:
+      - .:/docker-entrypoint-initdb.d
+      - ./data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: cp23ssi3
+      MYSQL_DATABASE: internhub
+    networks:
+      - mysqlnetwork
+
+networks:
+  mysqlnetwork:
