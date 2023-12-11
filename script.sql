@@ -24,12 +24,12 @@ create table if not exists addresses (
 ) engine = InnoDB;
 
 insert into addresses values('9346a466-4a82-4037-ab00-72ba24fa50bf',
-                             'Thailand',
+                             'ประเทศไทย',
                              '10120',
-                             'Bangkok',
-                             'Sathorn',
-                             'ThungWatDon',
-                             '17 Chan road',
+                             'กรุงเทพมหานคร',
+                             'สาทร',
+                             'ทุ่งวัดดอน',
+                             '17 ถนนจันทน์',
                              13.705368,
                              100.5331527);
 
