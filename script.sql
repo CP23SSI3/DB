@@ -100,7 +100,7 @@ insert into posts values (
                              '2023-10-05 13:30:00+07:00',
                              null,
                              125,
-                             'OPENED',
+                             'ALWAYS_OPENED',
                              'This is the description',
                              '8e20782f-2807-4f13-a11e-0fb9ff955488',
                              'This is default welfare. Free snack and salary-free.',
