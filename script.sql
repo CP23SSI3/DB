@@ -1,6 +1,7 @@
 create DATABASE if not EXISTS internhub;
 use internhub;
 
+drop table if exists users;
 drop table if exists postPositionTags;
 drop table if exists openPositions;
 drop table if exists positionTags;
@@ -23,15 +24,46 @@ create table if not exists addresses (
                                          primary key (addressId)
 ) engine = InnoDB;
 
+-- for company1
 insert into addresses values('9346a466-4a82-4037-ab00-72ba24fa50bf',
                              'ประเทศไทย',
                              '10120',
-                             'กรุงเทพมหานคร',
+                             'กรุงเทพ',
                              'สาทร',
                              'ทุ่งวัดดอน',
                              '17 ถนนจันทน์',
                              13.705368,
                              100.5331527);
+-- for user
+insert into addresses values('df292024-0858-4590-af5f-f92fd950d1df',
+                             'ประเทศไทย',
+                             '10150',
+                             'กรุงเทพ',
+                             'บางขุนเทียน',
+                             'ทุแสมดำ',
+                             '357/12 ตึกแถว',
+                             13.618337,
+                             100.401392);
+-- for admin
+insert into addresses values('fc1e7058-b373-4abd-aad0-8140f9658652',
+                             'ประเทศไทย',
+                             '10170',
+                             'กรุงเทพ',
+                             'ตลิ่งชัน',
+                             'ตลิ่งชัน',
+                             '57 หมู่ 123 ซอย 5 ',
+                             13.788523,
+                             100.445822);
+-- for user company1
+insert into addresses values('0e17bf21-b0bc-41e3-90f3-000c65707ddc',
+                             'ประเทศไทย',
+                             '10120',
+                             'กรุงเทพ',
+                             'ยานนาวา',
+                             'ช่องนนทรี',
+                             'ติดรฟฟ ช่องนนทรี',
+                             13.696311,
+                             100.546316);
 
 create table if not exists companies (
                                          compId VARCHAR(36) NOT NULL UNIQUE ,
@@ -116,30 +148,7 @@ insert into posts values (
                              'HYBRID',
                              'https://www.wikipedia.org/'
                          );
--- insert into posts values (
---                              'eba83fe4-937b-4054-a420-d977534feebe',
---                              'ประกาศรับฝึกงาน ด่วนที่สุด บริษัทตามใจฉัน',
---                              '2023-10-04 13:30:00+07:00',
---                              '2023-10-05 13:30:00+07:00',
---                              null,
---                              125,
---                              'OPENED',
---                              'ประกาศรับฝึกงานด่วนที่สุดแต่ตลอดทั้งปี นี่คือส่วนหนึ่งของตัวอย่างรายละเอียดข้อมูล',
---                              '8e20782f-2807-4f13-a11e-0fb9ff955488',
---                              'สวัสดิการพื้นฐาน : กินขนมฟรี ข้าวฟรี ไม่มีเงินเดือน',
---                              'ติดต่อไนซ์ วิชชุตา พิภพภิญโญสำหรับข้อมูลเพิ่มเติม กรุณาติดต่อผ่านอีเมลที่ระบุเอาไว้เท่านั้น',
---                              'portfolio,resume,cv',
---                              'Vichuta Pipoppinyo',
---                              '012-345-6789',
---                              'nice.vct@mail.kmutt.ac.th',
---                              '9346a466-4a82-4037-ab00-72ba24fa50bf',
---                              '09:30',
---                              '17:30',
---                              'mon,tue,wed,thu,fri',
---                              'HYBRID',
---                              'https://www.wikipedia.org/'
---                          );
-
+                         
 create table if not exists openPositions(
                                             openPositionId VARCHAR(36) NOT NULL,
                                             openPositionTitle VARCHAR(50) NOT NULL,
@@ -192,3 +201,71 @@ insert into postPositionTags values (
                                     'eba83fe4-937b-4054-a420-d977534feebe',
                                     'Backend developer'
                                 );
+                                
+create table if not exists users(
+	userId VARCHAR(36) NOT NULL,
+    username VARCHAR(50) NOT NULL unique,
+    firstname VARCHAR(50) NOT NULL,
+    lastname VARCHAR(50) NOT NULL,
+    password VARCHAR(72) NOT NULL,
+    email VARCHAR(320) NOT NULL unique,
+    phoneNumber VARCHAR(10) NOT NULL,
+    role VARCHAR(7) NOT NULL,
+    createDate DATETIME NOT NULL,
+    lastUpdate DATETIME NOT NULL,
+    lastActive DATETIME NOT NULL,
+    addressId VARCHAR(36) NOT NULL,
+    compId VARCHAR(36),
+    primary key (userId),
+    foreign key (compId) references companies(compId) on delete no action on update cascade,
+    foreign key (addressId) references addresses(addressId)
+) engine = InnoDB;
+
+insert into users values (
+	'c6703236-53ec-45a7-ba7d-efed13fcf1ef',
+	'testuser',
+	'userfirstname',
+	'userlastname',
+	'userpassword',
+	'user@gmail.com',
+	'0123456789',
+	'USER',
+	'2023-10-04 13:30:00+07:00',
+	'2023-10-04 13:30:00+07:00',
+	'2023-10-04 13:30:00+07:00',
+	'df292024-0858-4590-af5f-f92fd950d1df',
+	null
+);
+
+insert into users values (
+	'9c2e4bd8-a897-4bce-9a63-5267283d6e30',
+	'testadmin',
+	'adminfirstname',
+	'adminlastname',
+	'adminpassword',
+	'admin@gmail.com',
+	'0123456789',
+	'ADMIN',
+	'2023-10-04 13:30:00+07:00',
+	'2023-10-04 13:30:00+07:00',
+	'2023-10-04 13:30:00+07:00',
+	'fc1e7058-b373-4abd-aad0-8140f9658652',
+	null
+);
+-- user for company 1
+insert into users values (
+	'8e20782f-2807-4f13-a11e-0fb9ff955488',
+	'testcompany',
+	'compfirstname',
+	'complastname',
+	'comppassword',
+	'comp@gmail.com',
+	'0123456789',
+	'COMPANY',
+	'2023-10-04 13:30:00+07:00',
+	'2023-10-04 13:30:00+07:00',
+	'2023-10-04 13:30:00+07:00',
+	'0e17bf21-b0bc-41e3-90f3-000c65707ddc',
+	'8e20782f-2807-4f13-a11e-0fb9ff955488'
+);
+
