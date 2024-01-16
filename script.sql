@@ -211,7 +211,7 @@ create table if not exists users(
     email VARCHAR(320) NOT NULL unique,
     phoneNumber VARCHAR(10) NOT NULL,
     role VARCHAR(7) NOT NULL,
-    createDate DATETIME NOT NULL,
+    createdDate DATETIME NOT NULL,
     lastUpdate DATETIME NOT NULL,
     lastActive DATETIME NOT NULL,
     addressId VARCHAR(36) NOT NULL,
