@@ -221,12 +221,13 @@ create table if not exists users(
     foreign key (addressId) references addresses(addressId)
 ) engine = InnoDB;
 
+-- userpassword
 insert into users values (
 	'c6703236-53ec-45a7-ba7d-efed13fcf1ef',
 	'testuser',
 	'userfirstname',
 	'userlastname',
-	'userpassword',
+	'$2a$10$y2DNP33YK9YIrklkbDmhye8d90CzFkA6PEJmfUJbYQ/xoyZ1V93Mq',
 	'user@gmail.com',
 	'0123456789',
 	'USER',
@@ -237,12 +238,13 @@ insert into users values (
 	null
 );
 
+-- adminpassword
 insert into users values (
 	'9c2e4bd8-a897-4bce-9a63-5267283d6e30',
 	'testadmin',
 	'adminfirstname',
 	'adminlastname',
-	'adminpassword',
+	'$2a$10$R.ZDF.3Od/epLDl17N4sNuXve.aKqcprWlo.4LqKDf82QUa85hNf.',
 	'admin@gmail.com',
 	'0123456789',
 	'ADMIN',
@@ -252,13 +254,15 @@ insert into users values (
 	'fc1e7058-b373-4abd-aad0-8140f9658652',
 	null
 );
+
 -- user for company 1
+-- comppassword
 insert into users values (
 	'8e20782f-2807-4f13-a11e-0fb9ff955488',
 	'testcompany',
 	'compfirstname',
 	'complastname',
-	'comppassword',
+	'$2a$10$R7AONgcdcSmQn1cEBzjLNeXqav9aJ0FyTrQj9WMWTEANEpsAglL/e',
 	'comp@gmail.com',
 	'0123456789',
 	'COMPANY',
