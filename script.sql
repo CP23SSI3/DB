@@ -235,7 +235,7 @@ insert into users values (
 	'2023-10-04 13:30:00+07:00',
 	'2023-10-04 13:30:00+07:00',
 	'df292024-0858-4590-af5f-f92fd950d1df',
-	null
+    null
 );
 
 -- adminpassword
@@ -252,13 +252,13 @@ insert into users values (
 	'2023-10-04 13:30:00+07:00',
 	'2023-10-04 13:30:00+07:00',
 	'fc1e7058-b373-4abd-aad0-8140f9658652',
-	null
+    null
 );
 
 -- user for company 1
 -- comppassword
 insert into users values (
-	'8e20782f-2807-4f13-a11e-0fb9ff955488',
+	'd2f41869-e585-4df0-83fa-ab83b8aa6625',
 	'testcompany',
 	'compfirstname',
 	'complastname',
@@ -270,6 +270,21 @@ insert into users values (
 	'2023-10-04 13:30:00+07:00',
 	'2023-10-04 13:30:00+07:00',
 	'0e17bf21-b0bc-41e3-90f3-000c65707ddc',
-	'8e20782f-2807-4f13-a11e-0fb9ff955488'
+    '8e20782f-2807-4f13-a11e-0fb9ff955488'
 );
+
+-- create table if not exists usercompanies (
+-- 	usercompId VARCHAR(36) NOT NULL,
+--     userId VARCHAR(36) NOT NULL,
+--     compId VARCHAR(36) NOT NULL,
+--     primary key (usercompId),
+--     foreign key (userId) references users (userId),
+--     foreign key (compId) references companies (compId)
+-- );
+
+-- insert into usercompanies values (
+-- 	'cfef0c15-5a6c-4421-9a1a-06ea0d374625',
+-- 	'd2f41869-e585-4df0-83fa-ab83b8aa6625',
+--     '8e20782f-2807-4f13-a11e-0fb9ff955488'
+-- );
 
