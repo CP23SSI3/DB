@@ -1,6 +1,7 @@
 create DATABASE if not EXISTS internhub;
 use internhub;
 
+drop table if exists languages;
 drop table if exists users;
 drop table if exists postPositionTags;
 drop table if exists openPositions;
@@ -203,7 +204,7 @@ insert into postPositionTags values (
                                 );
                                 
 create table if not exists users(
-    addressId VARCHAR(36) NOT NULL,
+    addressId VARCHAR(36),
     dateOfBirth DATE NOT NULL,
     compId VARCHAR(36),
     createdDate DATETIME NOT NULL,
@@ -243,7 +244,7 @@ insert into users values (
 	'c6703236-53ec-45a7-ba7d-efed13fcf1ef',
     'This is me, myself, hope you hapy to see me!',
 	'testuser',
-    'www.google.com'
+    'https://www.google.com'
 );
 
 -- adminpassword
@@ -264,7 +265,7 @@ insert into users values (
 	'9c2e4bd8-a897-4bce-9a63-5267283d6e30',
     null,
 	'testadmin',
-    'www.google.com'
+    'https://www.google.com'
 );
 
 -- user for company 1
@@ -286,7 +287,60 @@ insert into users values (
 	'd2f41869-e585-4df0-83fa-ab83b8aa6625',
     null,
 	'testcompany',
-    'www.google.com'
+    'https://www.google.com'
+);
+
+create table if not exists educations(
+	degree VARCHAR(20) NOT NULL,
+    educationDesc VARCHAR(1500),
+    field VARCHAR(100) NOT NULL,
+	grade VARCHAR(5),
+	graduatedYear YEAR NOT NULL,
+	schoolName VARCHAR(100) NOT NULL,
+    startedYear YEAR NOT NULL,
+    userID VARCHAR(36) NOT NULL
+);
+
+create table if not exists experiences(
+	compName VARCHAR(100) NOT NULL,
+	endedYear YEAR,
+	experienceName VARCHAR(100) NOT NULL,
+    enperienceDesc VARCHAR(1500) NOT NULL,
+    position VARCHAR(100) NOT NULL,
+    startedYear YEAR NOT NULL,
+    userID VARCHAR(36) NOT NULL
+);
+
+create table if not exists skills(
+    userID VARCHAR(36) NOT NULL,
+	skillName VARCHAR(100) NOT NULL,
+    skillDesc VARCHAR(1500) NOT NULL
+);
+
+create table if not exists languages(
+	languageId VARCHAR(36),
+	languageName VARCHAR(50) NOT NULL,
+    userId VARCHAR(36) NOT NULL,
+    primary key (languageId),
+    foreign key (userId) references users (userId)
+);
+
+insert into languages value(
+	'fc4c23d1-a3a4-45e9-9e83-053342df2958',
+	'ภาษาไทย',
+    'c6703236-53ec-45a7-ba7d-efed13fcf1ef'
+);
+
+insert into languages value(
+	'eaf3d8a4-b12a-4eab-a8e8-15def907a542',
+	'ภาษาอังกฤษ',
+    'c6703236-53ec-45a7-ba7d-efed13fcf1ef'
+);
+
+insert into languages values(
+	'f994de02-30f0-4286-9909-f353286d0357',
+	'ภาษาญี่ปุ่น',
+    'c6703236-53ec-45a7-ba7d-efed13fcf1ef'
 );
 
 
