@@ -13,82 +13,83 @@ set names utf8;
 
 create table if not exists addresses (
                                          addressId VARCHAR(36) NOT NULL,
-                                         country VARCHAR(90) NOT NULL,
-                                         postalCode VARCHAR(10) NOT NULL,
-                                         city VARCHAR(35) NOT NULL,
-                                         district VARCHAR(50) NOT NULL,
-                                         subDistrict VARCHAR(50) NOT NULL,
                                          area VARCHAR(100) NOT NULL,
+                                         city VARCHAR(35) NOT NULL,
+                                         country VARCHAR(90) NOT NULL,
+                                         district VARCHAR(50) NOT NULL,
                                          latitude DECIMAL(10,8) NOT NULL,
                                          longitude DECIMAL(11,8) NOT NULL,
+                                         postalCode VARCHAR(10) NOT NULL,
+                                         subDistrict VARCHAR(50) NOT NULL,
                                          primary key (addressId)
 ) engine = InnoDB;
 
 -- for company1
 insert into addresses values('9346a466-4a82-4037-ab00-72ba24fa50bf',
-                             'ประเทศไทย',
-                             '10120',
-                             'กรุงเทพ',
-                             'สาทร',
-                             'ทุ่งวัดดอน',
                              '17 ถนนจันทน์',
+                             'กรุงเทพ',
+                             'ประเทศไทย',
+                             'สาทร',
                              13.705368,
-                             100.5331527);
+                             100.5331527,
+                             '10120',
+                             'ทุ่งวัดดอน');
 -- for user
 insert into addresses values('df292024-0858-4590-af5f-f92fd950d1df',
-                             'ประเทศไทย',
-                             '10150',
-                             'กรุงเทพ',
-                             'บางขุนเทียน',
-                             'ทุแสมดำ',
                              '357/12 ตึกแถว',
+                             'กรุงเทพ',
+                             'ประเทศไทย',
+                             'บางขุนเทียน',
                              13.618337,
-                             100.401392);
+                             100.401392,
+                             '10150',
+                             'ทุแสมดำ');
 -- for admin
 insert into addresses values('fc1e7058-b373-4abd-aad0-8140f9658652',
-                             'ประเทศไทย',
-                             '10170',
-                             'กรุงเทพ',
-                             'ตลิ่งชัน',
-                             'ตลิ่งชัน',
                              '57 หมู่ 123 ซอย 5 ',
+                             'กรุงเทพ',
+                             'ประเทศไทย',
+                             'ตลิ่งชัน',
                              13.788523,
-                             100.445822);
+                             100.445822,
+                             '10170',
+                             'ตลิ่งชัน');
 -- for user company1
 insert into addresses values('0e17bf21-b0bc-41e3-90f3-000c65707ddc',
-                             'ประเทศไทย',
-                             '10120',
-                             'กรุงเทพ',
-                             'ยานนาวา',
-                             'ช่องนนทรี',
                              'ติดรฟฟ ช่องนนทรี',
+                             'กรุงเทพ',
+                             'ประเทศไทย',
+                             'ยานนาวา',
                              13.696311,
-                             100.546316);
+                             100.546316,
+                             '10120',
+                             'ช่องนนทรี');
 
 create table if not exists companies (
-                                         compId VARCHAR(36) NOT NULL UNIQUE ,
-                                         compName VARCHAR(100) NOT NULL,
-                                         compLogoKey VARCHAR(100) NOT NULL,
+                                         addressId VARCHAR(36) NOT NULL,
                                          compDesc VARCHAR(500) NOT NULL,
-                                         defaultWelfare VARCHAR(1500),
+                                         compId VARCHAR(36) NOT NULL,
+                                         compLogoKey VARCHAR(100) NOT NULL,
+                                         compName VARCHAR(100) NOT NULL,
+                                         compUrl VARCHAR(255) NOT NULL,
                                          createdDate DATETIME NOT NULL,
+                                         defaultWelfare VARCHAR(1500),
                                          lastUpdate DATETIME NOT NULL,
                                          lastActive DATETIME NOT NULL,
-                                         compUrl VARCHAR(255) NOT NULL,
-                                         addressId VARCHAR(36) NOT NULL,
                                          primary key (compId),
                                          foreign key (addressId) references addresses (addressId)
 ) engine = InnoDB;
 
-insert into companies values ('8e20782f-2807-4f13-a11e-0fb9ff955488',
+insert into companies values ('9346a466-4a82-4037-ab00-72ba24fa50bf',
+                              'This is a compDesc as an example. Hope we will be able to make a move soon',
+                              '8e20782f-2807-4f13-a11e-0fb9ff955488',
+                              'logoKey',
                               'Test company',
                               'https://www.google.com',
-                              'This is a compDesc as an example. Hope we will be able to make a move soon',
+                              '2023-10-04 13:30:00+07:00',
                               'Lorem for the welfare for this company, This is the example script only',
                               '2023-10-04 13:30:00+07:00',
-                              '2023-10-04 13:30:00+07:00','2023-10-04 13:30:00+07:00',
-                              'https://www.google.com',
-                              '9346a466-4a82-4037-ab00-72ba24fa50bf');
+                              '2023-10-04 13:30:00+07:00');
 
 create table if not exists positionTags (
                                             positionTagName VARCHAR(50) NOT NULL,
@@ -99,91 +100,90 @@ insert into positionTags values ('Frontend developer');
 insert into positionTags values ('Backend developer');
 
 create table if not exists posts(
-                                    postId VARCHAR(36) NOT NULL,
-                                    title VARCHAR(100) NOT NULL,
-                                    createdDate DATETIME NOT NULL,
-                                    lastUpdateDate DATETIME NOT NULL,
-                                    closedDate DATE,
-                                    totalView NUMERIC NOT NULL,
-                                    status VARCHAR(15) NOT NULL,
-                                    postDesc VARCHAR(1500) NOT NULL,
-                                    compId VARCHAR(36) NOT NULL,
-                                    postWelfare VARCHAR(1500) NOT NULL,
-                                    enrolling VARCHAR(1500) NOT NULL,
-                                    documents VARCHAR(100),
-                                    coordinatorName VARCHAR(100) NOT NULL,
-                                    tel VARCHAR(12) NOT NULL,
-                                    email VARCHAR(320) NOT NULL,
                                     addressId VARCHAR(36) NOT NULL,
-                                    workStartTime TIME NOT NULL,
-                                    workEndTime TIME NOT NULL,
-                                    workDay VARCHAR(30) NOT NULL,
-                                    workType VARCHAR(20) NOT NULL,
+                                    closedDate DATE,
+                                    compId VARCHAR(36) NOT NULL,
+                                    coordinatorName VARCHAR(100) NOT NULL,
+                                    createdDate DATETIME NOT NULL,
+                                    documents VARCHAR(100),
+                                    email VARCHAR(320) NOT NULL,
+                                    enrolling VARCHAR(1500) NOT NULL,
+                                    lastUpdateDate DATETIME NOT NULL,
+                                    postDesc VARCHAR(1500) NOT NULL,
+                                    postId VARCHAR(36) NOT NULL,
                                     postUrl VARCHAR(255),
+                                    postWelfare VARCHAR(1500) NOT NULL,
+                                    status VARCHAR(15) NOT NULL,
+                                    tel VARCHAR(12) NOT NULL,
+                                    title VARCHAR(100) NOT NULL,
+                                    totalView NUMERIC NOT NULL,
+                                    workDay VARCHAR(30) NOT NULL,
+                                    workEndTime TIME NOT NULL,
+                                    workStartTime TIME NOT NULL,
+                                    workType VARCHAR(20) NOT NULL,
                                     primary key (postId),
                                     foreign key (compId) references companies(compId),
                                     foreign key (addressId) references addresses(addressId)
 ) engine = InnoDB;
 
 insert into posts values (
-                             'eba83fe4-937b-4054-a420-d977534feebe',
-                             'This is a title',
-                             '2023-10-04 13:30:00+07:00',
-                             '2023-10-05 13:30:00+07:00',
-                             null,
-                             125,
-                             'ALWAYS_OPENED',
-                             'This is the description',
-                             '8e20782f-2807-4f13-a11e-0fb9ff955488',
-                             'This is default welfare. Free snack and salary-free.',
-                             'Please contact coordinate via emil only',
-                             'portfolio,resume,cv',
-                             'Vichuta Pipoppinyo',
-                             '012-345-6789',
-                             'nice.vct@mail.kmutt.ac.th',
                              '9346a466-4a82-4037-ab00-72ba24fa50bf',
-                             '09:30',
-                             '17:30',
+                             null,
+                             '8e20782f-2807-4f13-a11e-0fb9ff955488',
+                             'Vichuta Pipoppinyo',
+                             '2023-10-04 13:30:00+07:00',
+                             'portfolio,resume,cv',
+                             'nice.vct@mail.kmutt.ac.th',
+                             'Please contact coordinate via emil only',
+                             '2023-10-05 13:30:00+07:00',
+                             'This is the description',
+                             'eba83fe4-937b-4054-a420-d977534feebe',
+                             'https://www.wikipedia.org/',
+                             'This is default welfare. Free snack and salary-free.',
+                             'ALWAYS_OPENED',
+                             '012-345-6789',
+                             'This is a title',
+                             125,
                              'mon,tue,wed,thu,fri',
-                             'HYBRID',
-                             'https://www.wikipedia.org/'
-                         );
+                             '17:30',
+                             '09:30',
+                             'HYBRID');
                          
 create table if not exists openPositions(
                                             openPositionId VARCHAR(36) NOT NULL,
-                                            openPositionTitle VARCHAR(50) NOT NULL,
                                             openPositionNum NUMERIC,
+                                            openPositionTitle VARCHAR(50) NOT NULL,
                                             openPositionDesc VARCHAR(200) NOT NULL,
                                             postId VARCHAR(36) NOT NULL,
-                                            workMonth NUMERIC,
                                             salary NUMERIC,
+                                            workMonth NUMERIC,
                                             primary key (openPositionId),
                                             foreign key (postId) references posts (postId) on delete cascade
 ) engine = InnoDB;
 
 insert into openPositions values (
                                      '24526070-68cf-48ff-8d02-29e9d05aeda2',
-                                     'Frontend Developer',
                                      4,
+                                     'Frontend Developer',
                                      'Working on Frontend mainly, using React',
                                      'eba83fe4-937b-4054-a420-d977534feebe',
-                                     6,
-                                     300
+                                     300,
+                                     6
                                  );
 
 insert into openPositions values (
                                      '72d02945-9f1b-401a-9809-b10aff9406cc',
-                                     'Backend developer',
                                      2,
+                                     'Backend developer',
                                      'Open position - for Java or Kotlin',
                                      'eba83fe4-937b-4054-a420-d977534feebe',
-                                     4,
-                                     250
+                                     250,
+                                     4
                                  );
 
 create table if not exists postPositionTags(
-    postPositionTagId VARCHAR(36) NOT NULL,
     postId VARCHAR(36) NOT NULL,
+    postPositionTagId VARCHAR(36) NOT NULL,
     positionTagName VARCHAR(50) NOT NULL,
     primary key (postPositionTagId),
     foreign key (postId) references posts (postId) on delete no action,
@@ -191,31 +191,35 @@ create table if not exists postPositionTags(
 ) engine = InnoDB;
 
 insert into postPositionTags values (
-                                 '991fd0cf-45e2-4c76-80cc-823fcfdf39c7',
                                  'eba83fe4-937b-4054-a420-d977534feebe',
+                                 '991fd0cf-45e2-4c76-80cc-823fcfdf39c7',
                                  'Frontend developer'
                                 );
 
 insert into postPositionTags values (
-                                    '8beec659-3cc2-4c0d-b79f-3370ca8dc1bc',
                                     'eba83fe4-937b-4054-a420-d977534feebe',
+                                    '8beec659-3cc2-4c0d-b79f-3370ca8dc1bc',
                                     'Backend developer'
                                 );
                                 
 create table if not exists users(
-	userId VARCHAR(36) NOT NULL,
-    username VARCHAR(50) NOT NULL unique,
-    firstname VARCHAR(50) NOT NULL,
-    lastname VARCHAR(50) NOT NULL,
-    password VARCHAR(72) NOT NULL,
+    addressId VARCHAR(36) NOT NULL,
+    dateOfBirth DATE NOT NULL,
+    compId VARCHAR(36),
+    createdDate DATETIME NOT NULL,
     email VARCHAR(320) NOT NULL unique,
+    firstname VARCHAR(50) NOT NULL,
+    gender CHAR(1),
+    lastActive DATETIME NOT NULL,
+    lastname VARCHAR(50) NOT NULL,
+    lastUpdate DATETIME NOT NULL,
+    password VARCHAR(72) NOT NULL,
     phoneNumber VARCHAR(10) NOT NULL,
     role VARCHAR(7) NOT NULL,
-    createdDate DATETIME NOT NULL,
-    lastUpdate DATETIME NOT NULL,
-    lastActive DATETIME NOT NULL,
-    addressId VARCHAR(36) NOT NULL,
-    compId VARCHAR(36),
+	userId VARCHAR(36) NOT NULL,
+    userDesc VARCHAR(15000), 
+    username VARCHAR(50) NOT NULL unique,
+    userProfileKey VARCHAR(100),
     primary key (userId),
     foreign key (compId) references companies(compId) on delete no action on update cascade,
     foreign key (addressId) references addresses(addressId)
@@ -223,68 +227,66 @@ create table if not exists users(
 
 -- userpassword
 insert into users values (
-	'c6703236-53ec-45a7-ba7d-efed13fcf1ef',
-	'testuser',
-	'userfirstname',
-	'userlastname',
-	'$2a$10$y2DNP33YK9YIrklkbDmhye8d90CzFkA6PEJmfUJbYQ/xoyZ1V93Mq',
+	'df292024-0858-4590-af5f-f92fd950d1df',
+    '2002-09-24',
+    null,
+	'2023-10-04 13:30:00+07:00',
 	'user@gmail.com',
+	'userfirstname',
+    null,
+	'2023-10-04 13:30:00+07:00',
+	'userlastname',
+	'2023-10-04 13:30:00+07:00',
+	'$2a$10$y2DNP33YK9YIrklkbDmhye8d90CzFkA6PEJmfUJbYQ/xoyZ1V93Mq',
 	'0123456789',
 	'USER',
-	'2023-10-04 13:30:00+07:00',
-	'2023-10-04 13:30:00+07:00',
-	'2023-10-04 13:30:00+07:00',
-	'df292024-0858-4590-af5f-f92fd950d1df',
-    null
+	'c6703236-53ec-45a7-ba7d-efed13fcf1ef',
+    'This is me, myself, hope you hapy to see me!',
+	'testuser',
+    'www.google.com'
 );
 
 -- adminpassword
 insert into users values (
-	'9c2e4bd8-a897-4bce-9a63-5267283d6e30',
-	'testadmin',
-	'adminfirstname',
-	'adminlastname',
-	'$2a$10$R.ZDF.3Od/epLDl17N4sNuXve.aKqcprWlo.4LqKDf82QUa85hNf.',
+	'fc1e7058-b373-4abd-aad0-8140f9658652',
+    '2002-09-24',
+    null,
+	'2023-10-04 13:30:00+07:00',
 	'admin@gmail.com',
+	'adminfirstname',
+    'M',
+	'2023-10-04 13:30:00+07:00',
+	'adminlastname',
+	'2023-10-04 13:30:00+07:00',
+	'$2a$10$R.ZDF.3Od/epLDl17N4sNuXve.aKqcprWlo.4LqKDf82QUa85hNf.',
 	'0123456789',
 	'ADMIN',
-	'2023-10-04 13:30:00+07:00',
-	'2023-10-04 13:30:00+07:00',
-	'2023-10-04 13:30:00+07:00',
-	'fc1e7058-b373-4abd-aad0-8140f9658652',
-    null
+	'9c2e4bd8-a897-4bce-9a63-5267283d6e30',
+    null,
+	'testadmin',
+    'www.google.com'
 );
 
 -- user for company 1
 -- comppassword
 insert into users values (
-	'd2f41869-e585-4df0-83fa-ab83b8aa6625',
-	'testcompany',
-	'compfirstname',
-	'complastname',
-	'$2a$10$R7AONgcdcSmQn1cEBzjLNeXqav9aJ0FyTrQj9WMWTEANEpsAglL/e',
+	'0e17bf21-b0bc-41e3-90f3-000c65707ddc',
+    '2002-09-24',
+    '8e20782f-2807-4f13-a11e-0fb9ff955488',
+	'2023-10-04 13:30:00+07:00',
 	'comp@gmail.com',
+	'compfirstname',
+    'F',
+	'2023-10-04 13:30:00+07:00',
+	'complastname',
+	'2023-10-04 13:30:00+07:00',
+	'$2a$10$R7AONgcdcSmQn1cEBzjLNeXqav9aJ0FyTrQj9WMWTEANEpsAglL/e',
 	'0123456789',
 	'COMPANY',
-	'2023-10-04 13:30:00+07:00',
-	'2023-10-04 13:30:00+07:00',
-	'2023-10-04 13:30:00+07:00',
-	'0e17bf21-b0bc-41e3-90f3-000c65707ddc',
-    '8e20782f-2807-4f13-a11e-0fb9ff955488'
+	'd2f41869-e585-4df0-83fa-ab83b8aa6625',
+    null,
+	'testcompany',
+    'www.google.com'
 );
 
--- create table if not exists usercompanies (
--- 	usercompId VARCHAR(36) NOT NULL,
---     userId VARCHAR(36) NOT NULL,
---     compId VARCHAR(36) NOT NULL,
---     primary key (usercompId),
---     foreign key (userId) references users (userId),
---     foreign key (compId) references companies (compId)
--- );
-
--- insert into usercompanies values (
--- 	'cfef0c15-5a6c-4421-9a1a-06ea0d374625',
--- 	'd2f41869-e585-4df0-83fa-ab83b8aa6625',
---     '8e20782f-2807-4f13-a11e-0fb9ff955488'
--- );
 
