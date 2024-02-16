@@ -2,6 +2,8 @@ create DATABASE if not EXISTS internhub;
 use internhub;
 
 drop table if exists languages;
+drop table if exists educations;
+drop table if exists experiences;
 drop table if exists users;
 drop table if exists postPositionTags;
 drop table if exists openPositions;
@@ -218,7 +220,7 @@ create table if not exists users(
     phoneNumber VARCHAR(10) NOT NULL,
     role VARCHAR(7) NOT NULL,
 	userId VARCHAR(36) NOT NULL,
-    userDesc VARCHAR(15000), 
+    userDesc VARCHAR(1500), 
     username VARCHAR(50) NOT NULL unique,
     userProfileKey VARCHAR(100),
     primary key (userId),
@@ -291,14 +293,39 @@ insert into users values (
 );
 
 create table if not exists educations(
-	degree VARCHAR(20) NOT NULL,
+	degree VARCHAR(50) NOT NULL,
     educationDesc VARCHAR(1500),
-    field VARCHAR(100) NOT NULL,
+    educationId VARCHAR(36),
+    field VARCHAR(100),
 	grade VARCHAR(5),
 	graduatedYear YEAR NOT NULL,
 	schoolName VARCHAR(100) NOT NULL,
-    startedYear YEAR NOT NULL,
+    endedYear YEAR NOT NULL,
     userID VARCHAR(36) NOT NULL
+);
+
+insert into educations value(
+'อนุบาล',
+'ศึกษาระดับอนุบาลแบบ English program ที่เน้นการใช้ภาษาอังกฤษเป็นหลัก',
+'4d3046e9-f8f1-4fed-a193-47313df1a5f9',
+null,
+null,
+2006,
+'โรงเรียนพระแม่มารีย์',
+2004,
+'c6703236-53ec-45a7-ba7d-efed13fcf1ef'
+);
+
+insert into educations value(
+'ประถมศึกษา',
+null,
+'f6c487de-87e8-4473-8572-cbdb41878759',
+null,
+3.8,
+2006,
+'โรงเรียนอัสสัมชัญคอนแวนต์ สีลม',
+2012,
+'c6703236-53ec-45a7-ba7d-efed13fcf1ef'
 );
 
 create table if not exists experiences(
