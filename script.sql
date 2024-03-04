@@ -370,4 +370,3 @@ insert into languages values(
     'c6703236-53ec-45a7-ba7d-efed13fcf1ef'
 );
 
-
