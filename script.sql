@@ -69,16 +69,16 @@ insert into addresses values('0e17bf21-b0bc-41e3-90f3-000c65707ddc',
                              'ช่องนนทรี');
 
 create table if not exists companies (
-                                         addressId VARCHAR(36) NOT NULL,
-                                         compDesc VARCHAR(500) NOT NULL,
+                                         addressId VARCHAR(36),
+                                         compDesc VARCHAR(500),
                                          compId VARCHAR(36) NOT NULL,
-                                         compLogoKey VARCHAR(100) NOT NULL,
+                                         compLogoKey VARCHAR(5000) NOT NULL,
                                          compName VARCHAR(100) NOT NULL,
-                                         compUrl VARCHAR(255) NOT NULL,
+                                         compUrl VARCHAR(255),
                                          createdDate DATETIME NOT NULL,
                                          defaultWelfare VARCHAR(1500),
-                                         lastUpdate DATETIME NOT NULL,
                                          lastActive DATETIME NOT NULL,
+                                         lastUpdate DATETIME NOT NULL,
                                          primary key (compId),
                                          foreign key (addressId) references addresses (addressId)
 ) engine = InnoDB;
@@ -222,7 +222,7 @@ create table if not exists users(
 	userId VARCHAR(36) NOT NULL,
     userDesc VARCHAR(1500), 
     username VARCHAR(50) NOT NULL unique,
-    userProfileKey VARCHAR(100),
+    userProfileKey VARCHAR(5000),
     primary key (userId),
     foreign key (compId) references companies(compId) on delete no action on update cascade,
     foreign key (addressId) references addresses(addressId)
@@ -298,48 +298,49 @@ create table if not exists educations(
     educationId VARCHAR(36),
     field VARCHAR(100),
 	grade VARCHAR(5),
-	graduatedYear YEAR NOT NULL,
+	graduatedYear YEAR,
 	schoolName VARCHAR(100) NOT NULL,
-    endedYear YEAR NOT NULL,
-    userID VARCHAR(36) NOT NULL
+    startedYear YEAR NOT NULL,
+    userId VARCHAR(36) NOT NULL
 );
 
 insert into educations value(
-'อนุบาล',
-'ศึกษาระดับอนุบาลแบบ English program ที่เน้นการใช้ภาษาอังกฤษเป็นหลัก',
-'4d3046e9-f8f1-4fed-a193-47313df1a5f9',
-null,
-null,
-2006,
-'โรงเรียนพระแม่มารีย์',
-2004,
-'c6703236-53ec-45a7-ba7d-efed13fcf1ef'
+	'อนุบาล',
+	'ศึกษาระดับอนุบาลแบบ English program ที่เน้นการใช้ภาษาอังกฤษเป็นหลัก',
+	'4d3046e9-f8f1-4fed-a193-47313df1a5f9',
+	null,
+	null,
+	2006,
+	'โรงเรียนพระแม่มารีย์',
+	2004,
+	'c6703236-53ec-45a7-ba7d-efed13fcf1ef'
 );
 
 insert into educations value(
-'ประถมศึกษา',
-null,
-'f6c487de-87e8-4473-8572-cbdb41878759',
-null,
-3.8,
-2006,
-'โรงเรียนอัสสัมชัญคอนแวนต์ สีลม',
-2012,
-'c6703236-53ec-45a7-ba7d-efed13fcf1ef'
+	'ประถมศึกษา',
+	null,
+	'f6c487de-87e8-4473-8572-cbdb41878759',
+	null,
+	3.8,
+	2006,
+	'โรงเรียนอัสสัมชัญคอนแวนต์ สีลม',
+	2012,
+	'c6703236-53ec-45a7-ba7d-efed13fcf1ef'
 );
 
 create table if not exists experiences(
 	compName VARCHAR(100) NOT NULL,
 	endedYear YEAR,
 	experienceName VARCHAR(100) NOT NULL,
-    enperienceDesc VARCHAR(1500) NOT NULL,
+    experienceDesc VARCHAR(1500) NOT NULL,
     position VARCHAR(100) NOT NULL,
     startedYear YEAR NOT NULL,
-    userID VARCHAR(36) NOT NULL
+    userId VARCHAR(36) NOT NULL
 );
 
 create table if not exists skills(
-    userID VARCHAR(36) NOT NULL,
+    userId VARCHAR(36) NOT NULL,
+    skillId VARCHAR(36) NOT NULL,
 	skillName VARCHAR(100) NOT NULL,
     skillDesc VARCHAR(1500) NOT NULL
 );
