@@ -2,6 +2,7 @@ create DATABASE if not EXISTS internhub;
 use internhub;
 
 drop table if exists languages;
+drop table if exists skills;
 drop table if exists educations;
 drop table if exists experiences;
 drop table if exists users;
@@ -331,19 +332,46 @@ insert into educations value(
 create table if not exists experiences(
 	compName VARCHAR(100) NOT NULL,
 	endedYear YEAR,
+    experienceId VARCHAR(36) NOT NULL,
 	experienceName VARCHAR(100) NOT NULL,
     experienceDesc VARCHAR(1500) NOT NULL,
     position VARCHAR(100) NOT NULL,
     startedYear YEAR NOT NULL,
-    userId VARCHAR(36) NOT NULL
+    userId VARCHAR(36) NOT NULL,
+    primary key (experienceId),
+    foreign key (userId) references users (userId)
 );
+
+insert into experiences value(
+	'Bangmod Exterprise Co.Ltd',
+    2023,
+    '596ffd3b-49c3-4501-bcf3-007ed6704afc',
+    'Full stack developer internship program',
+    'Focus on Frontend developer using react and clojure. Casually work on Backend using Kotlin.',
+    'Full Stack developer',
+    2023,
+    'c6703236-53ec-45a7-ba7d-efed13fcf1ef');
 
 create table if not exists skills(
     userId VARCHAR(36) NOT NULL,
     skillId VARCHAR(36) NOT NULL,
 	skillName VARCHAR(100) NOT NULL,
-    skillDesc VARCHAR(1500) NOT NULL
+    skillDesc VARCHAR(1500) NOT NULL,
+    primary key (skillId),
+    foreign key (userId) references users (userId)
 );
+
+insert into skills value(
+    'c6703236-53ec-45a7-ba7d-efed13fcf1ef',
+    '84d04c66-12ca-4d76-ac6f-e93273816d36',
+    'Drawing',
+    'Able to draw a picture digitally. Specialized at Anime style character.');
+
+insert into skills value(
+    'c6703236-53ec-45a7-ba7d-efed13fcf1ef',
+	'b8a77c02-7c78-44dc-a552-4be33dadf94f',
+    '2D model rigging',
+	'2D model rigging using Live2DCubism (beginner).');
 
 create table if not exists languages(
 	languageId VARCHAR(36),
