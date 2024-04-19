@@ -16,7 +16,7 @@ drop table if exists addresses;
 set names utf8;
 
 create table if not exists addresses (
-                                         addressId VARCHAR(36) NOT NULL,
+                                         addressId VARCHAR(36) NOT NULL UNIQUE,
                                          area VARCHAR(100) NOT NULL,
                                          city VARCHAR(35) NOT NULL,
                                          country VARCHAR(90) NOT NULL,
@@ -47,7 +47,7 @@ insert into addresses values('df292024-0858-4590-af5f-f92fd950d1df',
                              13.618337,
                              100.401392,
                              '10150',
-                             'ทุแสมดำ');
+                             'ทุงแสมดำ');
 -- for admin
 insert into addresses values('fc1e7058-b373-4abd-aad0-8140f9658652',
                              '57 หมู่ 123 ซอย 5 ',
@@ -81,13 +81,13 @@ create table if not exists companies (
                                          lastActive DATETIME NOT NULL,
                                          lastUpdate DATETIME NOT NULL,
                                          primary key (compId),
-                                         foreign key (addressId) references addresses (addressId)
+                                         foreign key (addressId) references addresses (addressId) on delete cascade on update cascade
 ) engine = InnoDB;
 
 insert into companies values ('9346a466-4a82-4037-ab00-72ba24fa50bf',
                               'This is a compDesc as an example. Hope we will be able to make a move soon',
                               '8e20782f-2807-4f13-a11e-0fb9ff955488',
-                              'logoKey',
+                              'https://internhub-company-logo.s3.ap-southeast-2.amazonaws.com/c6703236-53ec-45a7-ba7d-efed13fcf1ef.jpg',
                               'Test company',
                               'https://www.google.com',
                               '2023-10-04 13:30:00+07:00',
@@ -247,7 +247,7 @@ insert into users values (
 	'c6703236-53ec-45a7-ba7d-efed13fcf1ef',
     'This is me, myself, hope you hapy to see me!',
 	'testuser',
-    'https://www.google.com'
+    'https://internhub-user-profile.s3.ap-southeast-2.amazonaws.com/c6703236-53ec-45a7-ba7d-efed13fcf1ef.jpg'
 );
 
 -- adminpassword
@@ -268,7 +268,7 @@ insert into users values (
 	'9c2e4bd8-a897-4bce-9a63-5267283d6e30',
     null,
 	'testadmin',
-    'https://www.google.com'
+    'https://internhub-user-profile.s3.ap-southeast-2.amazonaws.com/9c2e4bd8-a897-4bce-9a63-5267283d6e30.png'
 );
 
 -- user for company 1
@@ -290,7 +290,7 @@ insert into users values (
 	'd2f41869-e585-4df0-83fa-ab83b8aa6625',
     null,
 	'testcompany',
-    'https://www.google.com'
+    'https://internhub-user-profile.s3.ap-southeast-2.amazonaws.com/d2f41869-e585-4df0-83fa-ab83b8aa6625.jpg'
 );
 
 create table if not exists educations(
@@ -302,7 +302,9 @@ create table if not exists educations(
 	graduatedYear YEAR,
 	schoolName VARCHAR(100) NOT NULL,
     startedYear YEAR NOT NULL,
-    userId VARCHAR(36) NOT NULL
+    userId VARCHAR(36) NOT NULL,
+    primary key (educationId),
+    foreign key (userId) references users (userId)
 );
 
 insert into educations value(
@@ -374,7 +376,7 @@ insert into skills value(
 	'2D model rigging using Live2DCubism (beginner).');
 
 create table if not exists languages(
-	languageId VARCHAR(36),
+	languageId VARCHAR(36) NOT NULL,
 	languageName VARCHAR(50) NOT NULL,
     userId VARCHAR(36) NOT NULL,
     primary key (languageId),
