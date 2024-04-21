@@ -247,7 +247,7 @@ insert into users values (
 	'c6703236-53ec-45a7-ba7d-efed13fcf1ef',
     'This is me, myself, hope you hapy to see me!',
 	'testuser',
-    'https://internhub-user-profile.s3.ap-southeast-2.amazonaws.com/c6703236-53ec-45a7-ba7d-efed13fcf1ef.jpg'
+    'https://internhub-user-profile.s3.ap-southeast-2.amazonaws.com/c6703236-53ec-45a7-ba7d-efed13fcf1ef.png'
 );
 
 -- adminpassword
