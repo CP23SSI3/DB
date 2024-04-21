@@ -87,7 +87,7 @@ create table if not exists companies (
 insert into companies values ('9346a466-4a82-4037-ab00-72ba24fa50bf',
                               'This is a compDesc as an example. Hope we will be able to make a move soon',
                               '8e20782f-2807-4f13-a11e-0fb9ff955488',
-                              'https://internhub-company-logo.s3.ap-southeast-2.amazonaws.com/c6703236-53ec-45a7-ba7d-efed13fcf1ef.jpg',
+                              'https://internhub-company-logo.s3.ap-southeast-2.amazonaws.com/8e20782f-2807-4f13-a11e-0fb9ff955488.jpg',
                               'Test company',
                               'https://www.google.com',
                               '2023-10-04 13:30:00+07:00',
