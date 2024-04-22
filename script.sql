@@ -247,7 +247,7 @@ insert into users values (
 	'c6703236-53ec-45a7-ba7d-efed13fcf1ef',
     'This is me, myself, hope you hapy to see me!',
 	'testuser',
-    'https://internhub-user-profile.s3.ap-southeast-2.amazonaws.com/c6703236-53ec-45a7-ba7d-efed13fcf1ef.png'
+    'https://internhub-user-profile.s3.ap-southeast-2.amazonaws.com/c6703236-53ec-45a7-ba7d-efed13fcf1ef.jpg'
 );
 
 -- adminpassword
@@ -268,7 +268,7 @@ insert into users values (
 	'9c2e4bd8-a897-4bce-9a63-5267283d6e30',
     null,
 	'testadmin',
-    'https://internhub-user-profile.s3.ap-southeast-2.amazonaws.com/9c2e4bd8-a897-4bce-9a63-5267283d6e30.png'
+    'https://internhub-user-profile.s3.ap-southeast-2.amazonaws.com/9c2e4bd8-a897-4bce-9a63-5267283d6e30.jpg'
 );
 
 -- user for company 1
