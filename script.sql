@@ -87,7 +87,7 @@ create table if not exists companies (
 insert into companies values ('9346a466-4a82-4037-ab00-72ba24fa50bf',
                               'This is a compDesc as an example. Hope we will be able to make a move soon',
                               '8e20782f-2807-4f13-a11e-0fb9ff955488',
-                              'https://internhub-company-logo.s3.ap-southeast-2.amazonaws.com/8e20782f-2807-4f13-a11e-0fb9ff955488.jpg',
+                              'https://internhub-company-logo.s3.ap-southeast-2.amazonaws.com/8e20782f-2807-4f13-a11e-0fb9ff955488',
                               'Test company',
                               'https://www.google.com',
                               '2023-10-04 13:30:00+07:00',
@@ -247,7 +247,7 @@ insert into users values (
 	'c6703236-53ec-45a7-ba7d-efed13fcf1ef',
     'This is me, myself, hope you hapy to see me!',
 	'testuser',
-    'https://internhub-user-profile.s3.ap-southeast-2.amazonaws.com/c6703236-53ec-45a7-ba7d-efed13fcf1ef.jpg'
+    'https://internhub-user-profile.s3.ap-southeast-2.amazonaws.com/c6703236-53ec-45a7-ba7d-efed13fcf1ef'
 );
 
 -- adminpassword
@@ -268,7 +268,7 @@ insert into users values (
 	'9c2e4bd8-a897-4bce-9a63-5267283d6e30',
     null,
 	'testadmin',
-    'https://internhub-user-profile.s3.ap-southeast-2.amazonaws.com/9c2e4bd8-a897-4bce-9a63-5267283d6e30.jpg'
+    'https://internhub-user-profile.s3.ap-southeast-2.amazonaws.com/9c2e4bd8-a897-4bce-9a63-5267283d6e30'
 );
 
 -- user for company 1
@@ -290,7 +290,7 @@ insert into users values (
 	'd2f41869-e585-4df0-83fa-ab83b8aa6625',
     null,
 	'testcompany',
-    'https://internhub-user-profile.s3.ap-southeast-2.amazonaws.com/d2f41869-e585-4df0-83fa-ab83b8aa6625.jpg'
+    'https://internhub-user-profile.s3.ap-southeast-2.amazonaws.com/d2f41869-e585-4df0-83fa-ab83b8aa6625'
 );
 
 create table if not exists educations(
